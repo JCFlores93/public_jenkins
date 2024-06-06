@@ -5,7 +5,7 @@ pipeline {
         string(name: 'cron_value', defaultValue: '50 19 * * *', description: 'Valor cron para la planificación')
     }
     triggers {
-        cron '*/1 * * * *'
+        cron '*/2 * * * *'
     }
     stages {
         stage('Build') {
@@ -65,7 +65,7 @@ pipeline {
                         echo "Cron expression: ${cronExpression}"
 
                         // Trigger the seed job
-                        build job: 'automation/seedjob', parameters: [string(name: 'cron_value', value: cronExpression)], wait: true
+                        // build job: 'automation/seedjob', parameters: [string(name: 'cron_value', value: cronExpression)], wait: true
                     } catch (Exception e) {
                         echo "An error occurred: ${e.message}"
                         throw e
