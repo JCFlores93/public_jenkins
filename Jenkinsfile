@@ -5,6 +5,7 @@ pipeline {
         string(name: 'cron_value', defaultValue: '50 19 * * *', description: 'Valor cron para la planificación')
     }
     triggers {
+        git(branch: 'main', push: true)
         cron '*/2 * * * *'
     }
     stages {
